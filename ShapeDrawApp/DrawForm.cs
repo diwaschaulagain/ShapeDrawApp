@@ -17,7 +17,7 @@ namespace ShapeDrawApp
         SolidBrush fill_color;
         string comd, prgm;
 
-        string cmd1, cmd2, cmd3, cmd4, cmd5, cmd6, cmd7, cmd8, cmd9, cmd10, cmd11;
+        string cmd1, cmd2, cmd3, cmd4, cmd5;
 
         private void btnFillIndi_Click(object sender, EventArgs e)
         {
@@ -39,7 +39,7 @@ namespace ShapeDrawApp
            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             ColorDialog c = new ColorDialog();
             if (c.ShowDialog() == DialogResult.OK)
@@ -49,7 +49,7 @@ namespace ShapeDrawApp
             }
         }
 
-        int x, y, num1, num2, num3, num4, num5, num6, num7, num8, num9, num10;
+        int x, y, z, v, l, j;
 
         public DrawForm()
         {
@@ -81,9 +81,9 @@ namespace ShapeDrawApp
                                 cmd4 = spilt[3];
                                 x = Int32.Parse(cmd2);
                                 y = Int32.Parse(cmd3);
-                                num3 = Int32.Parse(cmd4);
-                                g.DrawEllipse(outline, x, y, num3, num3);
-                                g.FillEllipse(fill_color, x, y, num3, num3);
+                                l = Int32.Parse(cmd4);
+                                g.DrawEllipse(outline, x, y, l, l);
+                                g.FillEllipse(fill_color, x, y, l, l);
                                 break;
                             case "square":
                                 cmd2 = spilt[1];
@@ -91,10 +91,10 @@ namespace ShapeDrawApp
                                 cmd4 = spilt[3];
                                 x = Int32.Parse(cmd2);
                                 y = Int32.Parse(cmd3);
-                                num3 = Int32.Parse(cmd4);
+                                l = Int32.Parse(cmd4);
                                 Console.WriteLine(cmd1);
-                                g.DrawRectangle(outline, x, y, num3, num3);
-                                g.FillRectangle(fill_color, x, y, num3, num3);
+                                g.DrawRectangle(outline, x, y, l, l);
+                                g.FillRectangle(fill_color, x, y, l, l);
                                 break;
                             case "rectangle":
                                 cmd2 = spilt[1];
@@ -103,44 +103,30 @@ namespace ShapeDrawApp
                                 cmd5 = spilt[4];
                                 x = Int32.Parse(cmd2);
                                 y = Int32.Parse(cmd3);
-                                num3 = Int32.Parse(cmd4);
-                                num4 = Int32.Parse(cmd5);
+                                l = Int32.Parse(cmd4);
+                                j = Int32.Parse(cmd5);
                                 Console.WriteLine(cmd1);
-                                g.DrawRectangle(outline, x, y, num3, num4);
-                                g.FillRectangle(fill_color, x, y, num3, num4);
-                                break;
-                            case "polygon":
-                                cmd2 = spilt[1];
-                                cmd3 = spilt[2];
-                                cmd4 = spilt[3];
-                                cmd5 = spilt[4];
-                                cmd6 = spilt[5];
-                                cmd7 = spilt[6];
-                                cmd8 = spilt[7];
-                                cmd9 = spilt[8];
-                                cmd10 = spilt[9];
-                                cmd11 = spilt[10];
-                                num1 = Int32.Parse(cmd2);
-                                num2 = Int32.Parse(cmd3);
-                                num3 = Int32.Parse(cmd4);
-                                num4 = Int32.Parse(cmd5);
-                                num5 = Int32.Parse(cmd6);
-                                num6 = Int32.Parse(cmd7);
-                                num7 = Int32.Parse(cmd8);
-                                num8 = Int32.Parse(cmd9);
-                                num9 = Int32.Parse(cmd10);
-                                num10 = Int32.Parse(cmd11);
-                                Point[] points = new Point[5];
-                                points[0] = new Point(num1, num2);
-                                points[1] = new Point(num3, num4);
-                                points[2] = new Point(num5, num6);
-                                points[3] = new Point(num7, num8);
-                                points[4] = new Point(num9, num10);
-                                g.DrawPolygon(outline, points);
-                                g.FillPolygon(fill_color, points);
+                                g.DrawRectangle(outline, x, y, l, j);
+                                g.FillRectangle(fill_color, x, y, l, j);
+                                break;                           
+                            case "triangle":
+                                    cmd2 = spilt[1];
+                                    cmd3 = spilt[2];
+                                    cmd4 = spilt[3];
+
+                                z = Int32.Parse(cmd2);
+                                v = Int32.Parse(cmd3);
+                                l = Int32.Parse(cmd4);
+
+                                Point[] triangle = new Point[3];
+                                triangle[0] = new Point(z, v);
+                                triangle[1] = new Point(v, l);
+                                triangle[2] = new Point(l, z);
+                                g.DrawPolygon(outline, triangle);
+                                g.FillPolygon(fill_color, triangle);
                                 break;
                             default:
-                                MessageBox.Show("you have entered wrong syntax or syntax is missing");
+                                MessageBox.Show("syntax error: try with a valid command");
                                 break;
                         }
                     }
@@ -151,7 +137,7 @@ namespace ShapeDrawApp
                     txtProgramArea.Text = "";
                     break;
                 default:
-                    MessageBox.Show("Entered Command must be RUN or CLEAR");
+                    MessageBox.Show("Please enter either run or clear as commands");
                     break;
             }
         }
