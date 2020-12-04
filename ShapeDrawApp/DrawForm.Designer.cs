@@ -35,6 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnPColor = new System.Windows.Forms.Button();
             this.Fill = new System.Windows.Forms.Button();
+            this.btnFillIndi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlDisplay
@@ -81,6 +82,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Choose pen color";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnPColor
             // 
@@ -93,18 +95,30 @@
             // 
             // Fill
             // 
-            this.Fill.Location = new System.Drawing.Point(322, 323);
+            this.Fill.Location = new System.Drawing.Point(293, 323);
             this.Fill.Name = "Fill";
-            this.Fill.Size = new System.Drawing.Size(75, 23);
+            this.Fill.Size = new System.Drawing.Size(144, 23);
             this.Fill.TabIndex = 7;
-            this.Fill.Text = "Fill";
+            this.Fill.Text = "Choose Fill Color";
             this.Fill.UseVisualStyleBackColor = true;
+            this.Fill.Click += new System.EventHandler(this.Fill_Click);
+            // 
+            // btnFillIndi
+            // 
+            this.btnFillIndi.Location = new System.Drawing.Point(453, 324);
+            this.btnFillIndi.Name = "btnFillIndi";
+            this.btnFillIndi.Size = new System.Drawing.Size(57, 27);
+            this.btnFillIndi.TabIndex = 8;
+            this.btnFillIndi.Text = "Color";
+            this.btnFillIndi.UseVisualStyleBackColor = true;
+            this.btnFillIndi.Click += new System.EventHandler(this.btnFillIndi_Click);
             // 
             // DrawForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 363);
+            this.Controls.Add(this.btnFillIndi);
             this.Controls.Add(this.Fill);
             this.Controls.Add(this.btnPColor);
             this.Controls.Add(this.button1);
@@ -128,6 +142,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnPColor;
         private System.Windows.Forms.Button Fill;
+        private System.Windows.Forms.Button btnFillIndi;
     }
 }
 

@@ -18,14 +18,46 @@ namespace ShapeDrawApp
         string comd, prgm;
 
         string cmd1, cmd2, cmd3, cmd4, cmd5, cmd6, cmd7, cmd8, cmd9, cmd10, cmd11;
+
+        private void btnFillIndi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Fill_Click(object sender, EventArgs e)
+        {
+          
+            ColorDialog c = new ColorDialog();
+            if (c.ShowDialog() == DialogResult.OK)
+            {
+                
+                fill_color = new SolidBrush(c.Color);
+               btnFillIndi.BackColor = c.Color;
+
+            }
+            
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColorDialog c = new ColorDialog();
+            if (c.ShowDialog() == DialogResult.OK)
+            {
+                btnPColor.BackColor = c.Color;
+
+            }
+        }
+
         int x, y, num1, num2, num3, num4, num5, num6, num7, num8, num9, num10;
 
         public DrawForm()
         {
             InitializeComponent();
             g = pnlDisplay.CreateGraphics();
-            outline = new Pen(Color.Red);
-            fill_color = new SolidBrush(Color.Blue);
+            outline = new Pen(btnPColor.BackColor);
+            fill_color = new SolidBrush(Color.White);
+            
         }
 
         private void btnPerformAction_Click(object sender, EventArgs e)
