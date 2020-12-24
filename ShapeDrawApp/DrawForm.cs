@@ -137,8 +137,9 @@ namespace ShapeDrawApp
                                 Point p2 = new Point(x, v);
                                 Point p3 = new Point(z, y);
                                 Point[] allpoints = { p1, p2, p3 };
-
-                                g.FillPolygon(fill_color, allpoints);
+                                Triangle tr = new Triangle();
+                                tr.fill(g, fill_color, allpoints);
+                                //g.FillPolygon(fill_color, allpoints);
 
                                 break;
                             default:
