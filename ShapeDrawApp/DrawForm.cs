@@ -65,7 +65,9 @@ namespace ShapeDrawApp
             switch (comd)
             {
                 case "run":
-                    if (txtProgramArea.Text == "") { MessageBox.Show("The Command Field Cannot be Empty"); }
+                    if (txtProgramArea.Text == "") { 
+                        MessageBox.Show("The Command Field Cannot be Empty");
+                    }
                     else
                     {
                         String[] spilt = prgm.Split(' ');
@@ -109,21 +111,26 @@ namespace ShapeDrawApp
                                 g.DrawRectangle(outline, x, y, l, j);
                                 g.FillRectangle(fill_color, x, y, l, j);
                                 break;                           
+              
+                          
                             case "triangle":
-                                    cmd2 = spilt[1];
-                                    cmd3 = spilt[2];
-                                    cmd4 = spilt[3];
+                                z = Int32.Parse(spilt[3]);
+                                v = Int32.Parse(spilt[4]);
+                                l = Int32.Parse(spilt[5]);
 
-                                z = Int32.Parse(cmd2);
-                                v = Int32.Parse(cmd3);
-                                l = Int32.Parse(cmd4);
 
-                                Point[] triangle = new Point[3];
-                                triangle[0] = new Point(z, v);
-                                triangle[1] = new Point(v, l);
-                                triangle[2] = new Point(l, z);
-                                g.DrawPolygon(outline, triangle);
-                                g.FillPolygon(fill_color, triangle);
+                                g.DrawLine(outline, x, y, z, y);
+
+                                g.DrawLine(outline, x, y, x, v);
+                                g.DrawLine(outline, z, y, x, v);
+
+                                Point p1 = new Point(x, y);
+                                Point p2 = new Point(x, v);
+                                Point p3 = new Point(z, y);
+                                Point[] allpoints = { p1, p2, p3 };
+
+                                g.FillPolygon(fill_color, allpoints);
+
                                 break;
                             default:
                                 MessageBox.Show("syntax error: try with a valid command");
@@ -136,6 +143,10 @@ namespace ShapeDrawApp
                     g.Clear(Color.White);
                     txtProgramArea.Text = "";
                     break;
+                case "moveTo":
+                    break;
+                case "drawTo":
+
                 default:
                     MessageBox.Show("Please enter either run or clear as commands");
                     break;
