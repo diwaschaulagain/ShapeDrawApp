@@ -114,8 +114,11 @@ namespace ShapeDrawApp
                                 l = Int32.Parse(cmd4);
                                 j = Int32.Parse(cmd5);
                                 Console.WriteLine(cmd1);
-                                g.DrawRectangle(outline, x, y, l, j);
-                                g.FillRectangle(fill_color, x, y, l, j);
+                                Rectangle rect = new Rectangle();
+                                rect.Draw(g, outline, x, y, l, j);
+                                rect.fill(g, fill_color, x, y, l, j);
+                                //g.DrawRectangle(outline, x, y, l, j);
+                                //g.FillRectangle(fill_color, x, y, l, j);
                                 break;                           
               
                           
