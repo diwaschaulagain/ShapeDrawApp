@@ -50,7 +50,7 @@ namespace ShapeDrawApp
         }
 
         int x, y, z, v, l, j;
-
+      
         public DrawForm()
         {
             InitializeComponent();
@@ -84,8 +84,11 @@ namespace ShapeDrawApp
                                 x = Int32.Parse(cmd2);
                                 y = Int32.Parse(cmd3);
                                 l = Int32.Parse(cmd4);
-                                g.DrawEllipse(outline, x, y, l, l);
-                                g.FillEllipse(fill_color, x, y, l, l);
+                                Circle cir = new Circle();
+                                cir.Draw(g, outline, x, y, l);
+                                cir.fill(g, fill_color, x, y, l);
+                                //g.DrawEllipse(outline, x, y, l, l);
+                                //g.FillEllipse(fill_color, x, y, l, l);
                                 break;
                             case "square":
                                 cmd2 = spilt[1];
@@ -95,8 +98,11 @@ namespace ShapeDrawApp
                                 y = Int32.Parse(cmd3);
                                 l = Int32.Parse(cmd4);
                                 Console.WriteLine(cmd1);
-                                g.DrawRectangle(outline, x, y, l, l);
-                                g.FillRectangle(fill_color, x, y, l, l);
+                                Square sq = new Square();
+                                sq.Draw(g, outline, x, y, l);
+                                sq.fill(g, fill_color, x, y, l);
+                                //g.DrawRectangle(outline, x, y, l, l);
+                                //g.FillRectangle(fill_color, x, y, l, l);
                                 break;
                             case "rectangle":
                                 cmd2 = spilt[1];
@@ -114,9 +120,9 @@ namespace ShapeDrawApp
               
                           
                             case "triangle":
-                                z = Int32.Parse(spilt[3]);
-                                v = Int32.Parse(spilt[4]);
-                                l = Int32.Parse(spilt[5]);
+                                z = Int32.Parse(spilt[1]);
+                                v = Int32.Parse(spilt[2]);
+                                l = Int32.Parse(spilt[3]);
 
 
                                 g.DrawLine(outline, x, y, z, y);
@@ -137,7 +143,11 @@ namespace ShapeDrawApp
                                 break;
                         }
                     }
+                    
+                   
 
+
+                 
                     break;
                 case "clear":
                     g.Clear(Color.White);
